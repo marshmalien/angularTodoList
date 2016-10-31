@@ -16,7 +16,7 @@
       </form>
 
       <ul>
-        <li ng-click="editing = true" ng-repeat="todo in todos.list">
+        <li ng-repeat="todo in todos.list">
           <input type="checkbox"
                 name="check"
                 ng-model="todo.completed">
@@ -26,7 +26,7 @@
                 ng-blur="editing = false"
                 id="edit-input"
                 type="text">
-          <p ng-hide="editing">{{todo.text}}</p>
+          <p ng-hide="editing" ng-click="editing = true">{{todo.text}}</p>
           <a ng-show="editing" ng-click="this.updateItem()" href="" id="save">&#x2714;</a>
           <a ng-hide="editing" href="" id="delete">&#x2715;</a>
         </li>
