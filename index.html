@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="node_modules/ng-inline-edit/dist/ng-inline-edit.min.css">
     <title>Todo List App with Angular</title>
   </head>
-  <body class="ng-cloak" ng-app="todoList">
-    <div class="main-container" ng-controller="todoCtlr as todos">
+  <body class="ng-cloak" ng-app="todoList" ng-controller="todoCtlr as todos">
+    <div class="main-container">
       <h1>Todo List App</h1>
 
       <form name="inputForm" ng-submit="todos.addNewItem()">
@@ -34,13 +34,13 @@
       </ul>
 
       <div class="bottom-container">
-        <a href="">(Number) items left</a>
+        <a href="">{{(todos.list | filter: {completed:false}).length }} items left</a>
         <div class="filters">
           <a href="#">All</a>
-          <a href="#">Active</a>
+          <a ng-click="todos.showIncomplete()" href="#">Active</a>
           <a href="#">Completed</a>
         </div>
-        <a href="#">Clear Completed</a>
+        <a ng-click="todos.clearCompleted()" href="#">Clear Completed</a>
       </div>
     </div>
 

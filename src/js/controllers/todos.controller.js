@@ -22,4 +22,18 @@ angular.module('todoList').controller('todoCtlr', function(todoStorage) {
     todoStorage.setData(this.list);
   }
 
+  this.showIncomplete = function() {
+    this.list.filter(function(todo) {
+      incomplete = !todo.completed;
+    })
+    console.log(incomplete);
+    return incomplete;
+  }
+
+  this.clearCompleted = function() {
+    this.list = this.list.filter(function(todo) {
+      return(!todo.completed);
+    })
+  }
+
 });
