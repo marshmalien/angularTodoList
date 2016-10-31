@@ -15,5 +15,8 @@
   "author": "Marliana Lara",
   "license": "ISC",
   "keywords": [],
-  "description": "##1. Install Node [www.nodejs.com](http://www.nodejs.com)"
+  "description": "##1. Install Node [www.nodejs.com](http://www.nodejs.com)",
+  "devDependencies": {
+    "angular-local-storage": "^0.5.0"
+  }
 }

@@ -27,7 +27,7 @@
                 id="edit-input"
                 type="text">
           <p ng-hide="editing">{{todo.text}}</p>
-          <a ng-show="editing" ng-click="" href="" id="save">&#x2714;</a>
+          <a ng-show="editing" ng-click="this.updateItem()" href="" id="save">&#x2714;</a>
           <a ng-hide="editing" href="" id="delete">&#x2715;</a>
         </li>
       </ul>
@@ -46,6 +46,8 @@
   </body>
   <script src="src/js/vendor/jquery-3.1.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="node_modules//angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="src/js/app.js"></script>
   <script src="src/js/controllers/todos.controller.js"></script>
+  <script src="src/js/services/todos.service.js"></script>
 </html>

@@ -1,10 +1,9 @@
-angular.module('todoList').controller('todoCtlr', function() {
+angular.module('todoList').controller('todoCtlr', function(todoStorage) {
 
-  this.list = [];
+  this.list = todoStorage.getData() || [];
 
-
-  this.updateItem = function() {
-    console.log('item has changed');
+  this.updateItem = function(todo) {
+    return todoStorage.setData(todo);
   };
 
   this.addNewItem = function() {
@@ -13,6 +12,7 @@ angular.module('todoList').controller('todoCtlr', function() {
       completed: false
     });
     this.text = "";
+    todoStorage.setData(this.list);
   };
 
 });
