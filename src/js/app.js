@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  angular.module('todoList', []);
+  angular.module('todoList', ['angularInlineEdit']);
 })();

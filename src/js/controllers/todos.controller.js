@@ -1,7 +1,11 @@
 angular.module('todoList').controller('todoCtlr', function(todoStorage) {
   this.list = todoStorage.getData() || [];
-  this.updateItem = function(todo) {
-    return todoStorage.setData(todo);
+  this.editing = false;
+
+  this.updateItem = function() {
+    todoStorage.setData(this.list);
+    this.editing = false;
+    console.log('edit');
   };
 
   this.addNewItem = function() {
