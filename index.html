@@ -6,17 +6,41 @@
     <link rel="stylesheet" href="lib/styles/main.min.css">
     <title>Todo List App with Angular</title>
   </head>
-  <body ng-app="todoList">
-    <div class="todo-list-container" ng-controller="todoCtlr">
+  <body class="ng-cloak" ng-app="todoList">
+    <div class="main-container" ng-controller="todoCtlr as todos">
       <h1>Todo List App</h1>
-      <form name="inputForm" ng-submit="">
-        <input type="text">
+
+      <form name="inputForm" ng-submit="todos.addNewItem()">
+        <input type="text" ng-model="todos.text">
         <button type="submit">Do It!</button>
       </form>
+
       <ul>
-        <li></li>
+        <li ng-click="editing = true" ng-repeat="todo in todos.list">
+          <input type="checkbox"
+                name="check"
+                ng-model="todo.completed">
+          <input ng-show="editing"
+                ng-change="updateItem()"
+                ng-model="todo.text"
+                ng-blur="editing = false"
+                id="edit-input"
+                type="text">
+          <p ng-hide="editing">{{todo.text}}</p>
+          <a ng-show="editing" ng-click="" href="" id="save">&#x2714;</a>
+          <a ng-hide="editing" href="" id="delete">&#x2715;</a>
+        </li>
       </ul>
 
+      <div class="bottom-container">
+        <a href="">(Number) items left</a>
+        <div class="filters">
+          <a href="#">All</a>
+          <a href="#">Active</a>
+          <a href="#">Completed</a>
+        </div>
+        <a href="#">Clear Completed</a>
+      </div>
     </div>
 
   </body>
