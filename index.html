@@ -24,13 +24,12 @@
           <p
                 type="text"
                 inline-edit="todo.text"
-                inline-edit-callback="todo.updateItem(newValue);"
                 inline-edit-on-blur="save"
                 inline-edit-btn-edit=""
                 inline-edit-on-click></p>
 
           <a ng-click="todos.updateItem();" href="" id="save">&#x2714;</a>
-          <a ng-hide="todos.editing" href="" id="delete">&#x2715;</a>
+          <a ng-click="todos.deleteItem($index);" ng-hide="todos.editing" href="" id="delete">&#x2715;</a>
         </li>
       </ul>
 
