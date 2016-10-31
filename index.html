@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/styles/reset.css">
+    <link rel="stylesheet" href="lib/styles/main.min.css">
+    <title>Todo List App with Angular</title>
+  </head>
+  <body ng-app="todoList">
+    <div class="todo-list-container" ng-controller="todoCtlr">
+      <h1>Todo List App</h1>
+      <form name="inputForm" ng-submit="">
+        <input type="text">
+        <button type="submit">Do It!</button>
+      </form>
+      <ul>
+        <li></li>
+      </ul>
+
+    </div>
+
+  </body>
+  <script src="src/js/vendor/jquery-3.1.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="src/js/app.js"></script>
+  <script src="src/js/controllers/todos.controller.js"></script>
+</html>
