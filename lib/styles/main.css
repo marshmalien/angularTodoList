@@ -150,7 +150,7 @@ ul {
   margin-right: 10px;
   outline: none; }
   .check-button.checked {
-    background-image: url("../../../images/checked.png");
+    background-image: url("../../../../images/checked.png");
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: 3px 2px; }

@@ -25,6 +25,7 @@ angular.module('todoList').controller('todoCtlr', function(todoStorage, $filter,
     this.list = this.list.filter(function(todo) {
       return !todo.completed;
     });
+    todoStorage.setData(this.list);
   };
 
   this.filterList = function() {
