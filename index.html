@@ -9,38 +9,32 @@
   <body class="ng-cloak" ng-app="todoList" ng-controller="todoCtlr as todos">
 
     <div class="homepage-hero-module">
-        <div class="video-container">
-            <div class="filter"></div>
-            <video autoplay loop class="fillWidth">
-                <source src="video/In-And-Out/MP4/In-And-Out.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-                <source src="video/In-And-Out/WEBM/In-And-Out.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            </video>
-        </div>
+      <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+          <source src="video/In-And-Out/MP4/In-And-Out.mp4" type="video/mp4" />
+          <source src="video/In-And-Out/WEBM/In-And-Out.webm" type="video/webm" />
+        </video>
+      </div>
     </div>
 
-    <div class=main-container>
+    <div class="main-container">
       <div class="todos-container">
         <h1>Todo List</h1>
-
         <form name="inputForm" ng-submit="todos.addNewItem()">
           <input type="text" ng-model="todos.text" placeholder="What needs to be done?">
-          <button type="submit">Add</button>
+          <button id="submit-button" type="submit">Add</button>
         </form>
 
         <ul>
-          <li ng-repeat="todo in todos.filterList() track by $index"
-          ng-class="{'odd-row': !($index%2), 'even-row': ($index%2)}">
-
-            <button ng-click="todo.completed = !todo.completed" ng-class="{'checked': todo.completed }"></button>
-
-            <p
-                  type="text"
-                  inline-edit-callback="todos.updateItem()"
-                  inline-edit="todo.text"
-                  inline-edit-on-blur="save"
-                  inline-edit-btn-edit=""
-                  inline-edit-on-click></p>
-
+          <li ng-repeat="todo in todos.filterList() track by $index">
+            <button class="check-button" ng-click="todo.completed = !todo.completed" ng-class="{'checked': todo.completed }"></button>
+            <p type="text"
+              inline-edit-callback="todos.updateItem()"
+              inline-edit="todo.text"
+              inline-edit-on-blur="save"
+              inline-edit-btn-edit=""
+              inline-edit-on-click></p>
             <a ng-click="todos.deleteItem($index);" ng-hide="todos.editing" href="" id="delete">&#x2715;</a>
           </li>
         </ul>

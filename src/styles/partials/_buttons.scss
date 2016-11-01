@@ -1,0 +1,38 @@
+#submit-button {
+  border-style: none;
+  flex-grow: 1;
+  font-size: 20px;
+  height: 100%;
+  background: rgb(207, 50, 0);
+  opacity: 0.95;
+  color: white;
+  &:hover {
+    background: rgb(123, 7, 0);
+  }
+}
+.check-button {
+  background: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: crosshair;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  outline: none;
+  &.checked {
+    background-image: url('../../../images/checked.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: 3px 2px;
+  }
+}
+li:hover #delete {
+  visibility: visible;
+}
+#delete {
+  visibility: hidden;
+  color: rgba(223, 148, 131, 0.85);
+  font-size: 30px;
+  text-decoration: none;
+  padding-left: 20px;
+}

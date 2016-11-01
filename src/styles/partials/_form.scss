@@ -1,0 +1,35 @@
+.main-container {
+  background: linear-gradient(to bottom, rgba(110,132,138,0.27) 0%, rgba(4,65,82,0.47) 21%, rgb(3,21,36) 77%);
+  bottom: 0;
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  z-index: 4;
+  .todos-container {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 15vw;
+    margin: auto;
+    position: absolute;
+    top: 10vh;
+    width: 70vw;
+    box-shadow: -5px 2px 78px -2px rgba(0,0,0,0.85);
+    form {
+      align-items: center;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      width: 100%;
+      input {
+        border-style: none;
+        flex-grow: 2;
+        font-size: 20px;
+        height: 100%;
+        outline: none;
+        padding-left: 20px;
+      }
+    }
+  }
+}
