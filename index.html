@@ -5,42 +5,57 @@
     <link rel="stylesheet" href="lib/styles/reset.css">
     <link rel="stylesheet" href="lib/styles/main.min.css">
     <link rel="stylesheet" href="node_modules/ng-inline-edit/dist/ng-inline-edit.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
     <title>Todo List App with Angular</title>
   </head>
   <body class="ng-cloak" ng-app="todoList" ng-controller="todoCtlr as todos">
-    <div class="main-container">
-      <h1>Todo List App</h1>
 
-      <form name="inputForm" ng-submit="todos.addNewItem()">
-        <input type="text" ng-model="todos.text">
-        <button type="submit">Do It!</button>
-      </form>
-
-      <ul>
-        <li ng-repeat="todo in todos.list">
-          <input type="checkbox"
-                name="check"
-                ng-model="todo.completed">
-          <p
-                type="text"
-                inline-edit="todo.text"
-                inline-edit-on-blur="save"
-                inline-edit-btn-edit=""
-                inline-edit-on-click></p>
-
-          <a ng-click="todos.updateItem();" href="" id="save">&#x2714;</a>
-          <a ng-click="todos.deleteItem($index);" ng-hide="todos.editing" href="" id="delete">&#x2715;</a>
-        </li>
-      </ul>
-
-      <div class="bottom-container">
-        <a href="">{{(todos.list | filter: {completed:false}).length }} items left</a>
-        <div class="filters">
-          <a href="#">All</a>
-          <a ng-click="todos.showIncomplete()" href="#">Active</a>
-          <a href="#">Completed</a>
+    <div class="homepage-hero-module">
+        <div class="video-container">
+            <div class="filter"></div>
+            <video autoplay loop class="fillWidth">
+                <source src="video/In-And-Out/MP4/In-And-Out.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                <source src="video/In-And-Out/WEBM/In-And-Out.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            </video>
         </div>
-        <a ng-click="todos.clearCompleted()" href="#">Clear Completed</a>
+    </div>
+
+    <div class=main-container>
+      <div class="todos-container">
+        <h1>Todo List</h1>
+
+        <form name="inputForm" ng-submit="todos.addNewItem()">
+          <input type="text" ng-model="todos.text" placeholder="What needs to be done?">
+          <button type="submit">Add</button>
+        </form>
+
+        <ul>
+          <li ng-repeat="todo in todos.filterList();"
+          ng-class="{'odd-row': !($index%2), 'even-row': ($index%2)}">
+
+            <button ng-click="todo.completed = !todo.completed" ng-class="{'checked': todo.completed }"></button>
+
+            <p
+                  type="text"
+                  inline-edit-callback="todos.updateItem()"
+                  inline-edit="todo.text"
+                  inline-edit-on-blur="save"
+                  inline-edit-btn-edit=""
+                  inline-edit-on-click></p>
+
+            <a ng-click="todos.deleteItem($index);" ng-hide="todos.editing" href="" id="delete">&#x2715;</a>
+          </li>
+        </ul>
+
+        <div class="bottom-container">
+          <a href="" id="numLeft">{{(todos.list | filter: {completed:false}).length }} items left</a>
+          <div class="filters">
+            <a ng-click="todos.filterBy='all'" href="#">All</a>
+            <a ng-click="todos.filterBy='active'" href="#">Active</a>
+            <a ng-click="todos.filterBy='inactive'" href="#">Completed</a>
+          </div>
+          <a ng-click="todos.clearCompleted()" id="clear" href="#">Clear Completed</a>
+        </div>
       </div>
     </div>
 
@@ -50,6 +65,7 @@
   <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="node_modules/ng-inline-edit/dist/ng-inline-edit.min.js"></script>
   <script src="src/js/app.js"></script>
+  <script src="src/js/video.js"></script>
   <script src="src/js/controllers/todos.controller.js"></script>
   <script src="src/js/services/todos.service.js"></script>
 </html>

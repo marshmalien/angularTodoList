@@ -1,11 +1,10 @@
-angular.module('todoList').controller('todoCtlr', function(todoStorage) {
+angular.module('todoList').controller('todoCtlr', function(todoStorage, $filter, filterFilter) {
   this.list = todoStorage.getData() || [];
   this.editing = false;
-  this.incomplete = "";
+  this.filterBy = "all";
 
   this.updateItem = function() {
     todoStorage.setData(this.list);
-    this.editing = false;
   };
 
   this.addNewItem = function() {
@@ -20,20 +19,25 @@ angular.module('todoList').controller('todoCtlr', function(todoStorage) {
   this.deleteItem = function(id) {
     this.list.splice(id, 1);
     todoStorage.setData(this.list);
-  }
-
-  this.showIncomplete = function() {
-    this.list.filter(function(todo) {
-      incomplete = !todo.completed;
-    })
-    console.log(incomplete);
-    return incomplete;
-  }
+  };
 
   this.clearCompleted = function() {
     this.list = this.list.filter(function(todo) {
-      return(!todo.completed);
-    })
-  }
+      return !todo.completed;
+    });
+  };
 
+  this.filterList = function() {
+    if (this.filterBy === 'all') {
+      return this.list;
+    } else if (this.filterBy === 'active') {
+      return this.list.filter(function(todo) {
+        return !todo.completed;
+      });
+    } else if (this.filterBy === 'inactive') {
+      return this.list.filter(function(todo) {
+        return todo.completed;
+      });
+    }
+  };
 });
