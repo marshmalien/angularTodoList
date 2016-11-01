@@ -3,15 +3,27 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         sass: {
             dist: {
-                options: {
-                    style: 'compressed'
-                },
                 files: {
-                    'lib/styles/main.min.css': 'src/styles/**/*.scss'
+                    'lib/styles/main.css': 'src/styles/**/*.scss'
                 }
             }
         },
-
+        concat: {
+          options: {
+            separator: ';\n',
+          },
+          dist: {
+            src: ['node_modules/angular/angular.min.js', 'node_modules/angular-local-storage/dist/angular-local-storage.min.js', 'node_modules/ng-inline-edit/dist/ng-inline-edit.min.js', 'src/js/**/*.js'],
+            dest: 'lib/js/bundle.js'
+          },
+        },
+        cssmin: {
+          target: {
+            files: {
+              'lib/styles/bundle.css': ['lib/styles/reset.css', 'node_modules/ng-inline-edit/dist/ng-inline-edit.min.css', 'lib/styles/main.css']
+            }
+          }
+        },
         watch: {
             css: {
                 files: ['src/styles/**/*'],
@@ -29,8 +41,12 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.registerTask('default', [
         'sass',
+        'cssmin',
+        'concat',
         'watch',
     ]);
 };

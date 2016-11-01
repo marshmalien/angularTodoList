@@ -23,7 +23,7 @@
   position: absolute;
   top: 10vh;
   width: 70vw;
-  box-shadow: -5px 2px 78px -2px rgba(0,0,0,0.77);
+  box-shadow: -5px 2px 78px -2px rgba(0,0,0,0.85);
   form {
     align-items: center;
     display: flex;
@@ -46,6 +46,9 @@
       background: rgb(207, 50, 0);
       opacity: 0.95;
       color: white;
+      &:hover {
+        background: rgb(123, 7, 0);
+      }
     }
   }
 }
@@ -88,6 +91,7 @@ ul {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+      outline: none;
       &.checked {
         background-image: url('../../../images/checked.png');
         background-size: 90%;
